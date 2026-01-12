@@ -1,0 +1,3 @@
+# ignore local IDE files etc
+.vscode/
+.DS_Store
