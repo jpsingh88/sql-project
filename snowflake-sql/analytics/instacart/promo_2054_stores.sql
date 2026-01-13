@@ -27,6 +27,10 @@ WHERE
     -- partner_id = 2246
     csv_file_id = '162262485'
     AND data:sale_type IN ('1','2', '3')
+    -- AND store_code = '10029'
+    -- AND sale_price = price
+    -- AND price < sale_price
+    -- AND data:sale_type IN ('2', '3')
 ORDER BY
     row_number asc;
     -- LIMIT 10;
