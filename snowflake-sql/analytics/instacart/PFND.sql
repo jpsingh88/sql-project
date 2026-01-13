@@ -1,5 +1,4 @@
 /* Template */
-
 SELECT 
     *    
 FROM
@@ -11,7 +10,6 @@ WHERE
 LIMIT 50;
 
 /* Template */
-
 SELECT
     DISTINCT
     DATE(created_at) AS date,
@@ -49,13 +47,34 @@ SELECT
     data:size::string            AS size,
     data:taxable::boolean        AS taxable,
     data:usa_snap_eligible::boolean AS usa_snap_eligible
-
 FROM catalog.catalog.partner_file_normalized_data
 WHERE  
     -- retailer_id = 2002
     partner_id = 567
     AND created_at >= current_date - 3
 LIMIT 50;
+
+
+/* Wakefern Promo Issue */
+SELECT 
+    DISTINCT
+    data:lookup_code::STRING UPC,
+    data:promotion:promotion_group_id::STRING promo_group_id,
+    data:promotion:promotion_type::STRING promotion_type,
+    data:promotion:promotion_metadata::STRING promotion_metadata,
+    DATE(data:promotion:promotion_start_at::STRING) promotion_start,
+    DATE(data:promotion:promotion_end_at::STRING) promotion_end,
+    inventory_area_id IA,
+FROM
+    catalog.catalog.partner_file_normalized_data
+WHERE  
+    -- partner_id = 138
+    -- AND created_at >= current_date - 3
+    promo_group_id != 'NO_PROMO'
+    AND csv_file_id = '162427888'
+ORDER BY promo_group_id desc
+LIMIT 50;
+
 
 
 /* MW Bowl and Basket product not found */
