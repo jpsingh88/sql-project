@@ -55,6 +55,25 @@ WHERE
 LIMIT 50;
 
 
+/* Yoke's Dept Id issue */
+SELECT 
+    data:lookup_code::STRING UPC,
+    data:item_department_id::STRING department_id,
+    data:location_code::STRING store_id
+    -- *    
+FROM
+    catalog.catalog.partner_file_normalized_data
+WHERE  
+    retailer_id = 2635
+    AND UPC ILIKE '%89855900216%'
+    -- partner_id = 567
+    AND created_at >= current_date - 3
+LIMIT 50;
+
+
+
+
+
 /* Wakefern Promo Issue */
 SELECT 
     DISTINCT
@@ -95,7 +114,7 @@ FROM
 WHERE  
     retailer_id  = 497
     AND data:lookup_code ILIKE '%411900677%'
-    AND created_at >= current_date() - 1
+    AND created_at >= current_date()
 ORDER BY date DESC
 LIMIT 100
 ;
