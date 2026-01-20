@@ -114,7 +114,7 @@ FROM
 WHERE  
     retailer_id  = 497
     AND data:lookup_code ILIKE '%411900677%'
-    AND created_at >= current_date()
+    AND created_at >= current_date() - 1
 ORDER BY date DESC
 LIMIT 100
 ;

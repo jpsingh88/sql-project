@@ -25,7 +25,7 @@ FROM
     JOIN "CATALOG"."TMP"."WALGREEN_PROMO_STORE_ID" wps ON pfrd.data:store_code::NUMBER = wps.location_code
 WHERE
     -- partner_id = 2246
-    csv_file_id = '162262485'
+    csv_file_id = '163255726'
     AND data:sale_type IN ('1','2', '3')
     -- AND store_code = '10029'
     -- AND sale_price = price
